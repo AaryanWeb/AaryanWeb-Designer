@@ -1,0 +1,13 @@
+<html>
+<head>
+<title>Hello world</title>
+<body>
+<script>
+let num1=5;
+let num2=3;
+let sum=num1+num2;
+alert("The sum of num1+"and"+num2+"is;"+sum;)
+("Hello world")
+</script>
+</body>
+</html>

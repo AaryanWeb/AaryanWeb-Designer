@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Animated Storybook</title>
+   <style>
+       body {
+           font-family: sans-serif;
+           margin: 0;
+           overflow: hidden; /* Prevents scrollbars */
+       }
+
+       #story-container {
+           width: 800px; /* Adjust as needed */
+           height: 600px; /* Adjust as needed */
+           position: relative;
+           margin: 20px auto;
+       }
+
+       .page {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: #f0f0f0;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           opacity: 0; /* Initially hide all pages */
+           transition: opacity 0.5s ease-in-out; /* Smooth fade-in/out */
+       }
+
+       .page.active {
+           opacity: 1; /* Show the active page */
+       }
+
+       .page img {
+           max-width: 90%;
+           max-height: 70%;
+           margin-bottom: 20px;
+       }
+
+       .page h2 {
+           margin-top: 0;
+       }
+
+       #controls {
+           text-align: center;
+           margin-top: 20px;
+       }
+   </style>
+</head>
+<body>
+
+   <div id="story-container">
+       <div class="page active">  <img src="https://th.bing.com/th/id/OIP.b9Zk6VF4yImoVwb7VBdl2gHaFS?w=281&h=201&c=7&r=0&o=5&pid=1.7">
+           <h2>Page 1:A robot is a machine—especially one programmable by a computer—capable of carrying out a complex series of actions automatically.[2] A robot can be guided by an external control device, or the control may be embedded within.</h2>
+           <p></p>
+       </div>
+         <div class="page active"> 
+           <img src="https://th.bing.com/th/id/OIP.K2lLfFa1layyzzx3laxxTAHaFD?w=226&h=180&c=7&r=0&o=5&pid=1.7">
+           <h2>Page 2: Different types of robots are:
+1.Service Robots
+Service robots are the friendly helpers in public and domestic settings.
+
+They often interact directly with people, assisting in tasks ranging from the mundane to the complex.
+
+Service Robots are like the helpful assistants in hotels, hospitals, and even our homes.
+
+For instance, you might have seen or heard about robots delivering room service in hotels or guiding customers in shopping malls.
+
+1. Service Robots
+
+<img src="data:image/jpeg;base64,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">
+
+Robotic advisor service technology in healthcare smart hospital
+
+
+Service robots are the friendly helpers in public and domestic settings.
+
+They often interact directly with people, assisting in tasks ranging from the mundane to the complex.
+
+Service Robots are like the helpful assistants in hotels, hospitals, and even our homes.
+
+For instance, you might have seen or heard about robots delivering room service in hotels or guiding customers in shopping malls.
+
+Examples
+
+A famous example is Pepper, the humanoid robot often used in customer service roles, capable of recognizing faces and basic human emotions.
+
+In hospitals, service robots assist in logistics, like delivering medications and supplies.
+
+In homes, the most familiar service robots are the vacuum-cleaning robots like Roomba, which navigate around our living spaces, keeping floors clean without any manual effort.
+
+2. Humanoid Robots
+
+<img src="https://th.bing.com/th/id/OIP.fZp06tKQNmnMPzv0emBrPQHaLH?w=132&h=196&c=7&r=0&o=5&pid=1.7">
+
+Humanoid robot:
+
+
+Humanoid types of robots are like the sci-fi characters we’ve always imagined, but they’re real and walking (sometimes even dancing) among us!
+
+These robots are designed to look and move like humans, having a head, torso, arms, and legs.
+
+Their human-like design helps them navigate our world, which is built for, well, humans
+
+</h2>
+          <img src="https://th.bing.com/th/id/OIP.O7U8cw1K55SYTDb6WvmydgHaDj?w=295&h=180&c=7&r=0&o=5&pid=1.7">
+       </div>
+       <div class="page active">
+         
+       </div>
+       <div class="page">
+           <img src="https://th.bing.com/th/id/OIP.obuQqdQ9Zv8i4x6hHa2qpgAAAA?w=255&h=180&c=7&r=0&o=5&pid=1.7">
+           <h2>Page 3::MAterials Required
+Robotics With Steel
+Robot Making Materials – Aluminum Robotics
+Bronze, Brass, and Copper in Robotics Materials
+Robotics & Stainless Steel
+Titanium in Robotics – Best Robot Making Materials
+Other Types of Metals Used in Robotics
+Robot Materials – Plastics in Robotics
+Polystyrene
+Plexiglass
+Polyvinylchloride or PVC
+ABS Plastic
+Polycarbonate
+Robot Making Materials – Acetal
+Polyethylene (PE) and Polypropylene (PP)
+Nilon
+PETE
+Composites
+Wood in Robotics
+Glass Fiber with Carbon Fiber Type of Robot Materials
+Filled Plastics
+Ceramics in Robot Making Materials
+Glass
+Elastomers
+Rubber Robot Materials
+Sulfated Rubber
+Tensile Elements That Can Bend
+
+</h2>
+
+</h2>
+          
+       </div>
+       </div>
+
+   <div id="controls">
+       <button onclick="prevPage()">Previous Page</button>
+       <button onclick="nextPage()">Next Page</button>
+   </div>
+
+   <script>
+       let currentPage = 0;
+       const pages = document.querySelectorAll('.page');
+
+       function showPage(pageIndex) {
+           pages.forEach((page, index) => {
+               if (index === pageIndex) {
+                   page.classList.add('active');
+               } else {
+                   page.classList.remove('active');
+               }
+           });
+       }
+
+       function nextPage() {
+           currentPage = Math.min(currentPage + 1, pages.length - 1);
+           showPage(currentPage);
+       }
+
+       function prevPage() {
+           currentPage = Math.max(currentPage - 1, 0);
+           showPage(currentPage);
+       }
+
+       showPage(0); // Show the first page initially
+   </script>
+
+</body>
+</html>
+

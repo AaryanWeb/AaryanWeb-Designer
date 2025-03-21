@@ -1,0 +1,9 @@
+<html>
+<head>
+<title>Hello world</title>
+<body>
+<script>alart
+("Hello world">
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<html>
+<head>
+<title>java script <title>
+</head>
+</body>
+<h2>website designing 1</h2>
+<p>enter two integer's</p>
+<                                                                                                                                                                                            >
