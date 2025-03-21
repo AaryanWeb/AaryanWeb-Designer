@@ -1,18 +1,19 @@
 <html>
 <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kids Shopping Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: peachpuff;
+            background-color: #f0f8ff;
         }
         h1 {
-            color: blue;
+            color: #ff4500;
         }
         .item {
-            background-color: yellow;
+            background-color: #fffacd;
             border: 2px solid #333;
             padding: 10px;
             margin: 10px;
@@ -21,7 +22,7 @@
         .cart {
             margin-top: 20px;
             padding: 10px;
-            background-color:pink;
+            background-color: #90ee90;
             display: inline-block;
             border-radius: 10px;
         }
@@ -34,35 +35,44 @@
 
     <div class="item">
         <p>🎈 Balloon - ₹50</p>
-        <button onclick="addToCart('Balloon')">Add to Cart</button>
+        <button onclick="addToCart('Balloon', 50)">Add to Cart</button>
     </div>
 
     <div class="item">
         <p>🧸 Teddy Bear - ₹200</p>
-        <button onclick="addToCart('Teddy Bear')">Add to Cart</button>
+        <button onclick="addToCart('Teddy Bear', 200)">Add to Cart</button>
     </div>
 
     <div class="item">
         <p>🚗 Toy Car - ₹150</p>
-        <button onclick="addToCart('Toy Car')">Add to Cart</button>
+        <button onclick="addToCart('Toy Car', 150)">Add to Cart</button>
     </div>
 
     <div class="cart">
         <h3>Shopping Cart</h3>
         <p id="cartList">Cart is empty</p>
+        <h3>Total: ₹<span id="totalAmount">0</span></h3>
     </div>
 
     <script>
-        function addToCart(item) {
+        let totalAmount = 0;
+
+        function addToCart(item, price) {
             let cart = document.getElementById("cartList");
+            let total = document.getElementById("totalAmount");
+
+            // Update cart items
             if (cart.innerHTML === "Cart is empty") {
                 cart.innerHTML = item;
             } else {
                 cart.innerHTML += ", " + item;
             }
+
+            // Update total amount
+            totalAmount += price;
+            total.innerHTML = totalAmount;
         }
     </script>
 
 </body>
 </html>
-
